@@ -1,0 +1,85 @@
+extends layout.pug
+
+block content
+    style.
+        .center-form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        .fieldset-border {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .create-contact-btn {
+            background-color: #2ECCFA;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+            margin-left: 18px;
+            
+        }
+
+    .center-form
+        h1 Create Contact
+        form(action='/create', method='post')
+            fieldset.fieldset-border
+                legend Basic Info
+                section 
+                    label(for='first') First Name: 
+                    br
+                    input(type='text', placeholder='', name='first')
+                section 
+                    label(for='last') Last Name: 
+                    br
+                    input(type='text', placeholder='', name='last')
+                section 
+                    label(for='phone') Phone: 
+                    br
+                    input(type='text', placeholder='', name='phone')
+                section 
+                    label(for='email') email: 
+                    br
+                    input(type='text', placeholder='', name='email')
+            fieldset.fieldset-border
+                legend Address
+                section 
+                    label(for='street') Street: 
+                    br
+                    input(type='text', placeholder='', name='street')
+                section 
+                    label(for='city') City: 
+                    br
+                    input(type='text', placeholder='', name='city')
+                section 
+                    label(for='state') State: 
+                    br
+                    input(type='text', placeholder='', name='state')
+                section 
+                    label(for='zip') Zip: 
+                    br
+                    input(type='text', placeholder='', name='zip')
+                section 
+                    label(for='country') Country: 
+                    br
+                    input(type='text', placeholder='', name='country')
+            fieldset.fieldset-border
+                legend Contact Preferences
+                section 
+                    input(type='checkbox', name='contact_by_phone')
+                    label(for='contact_by_phone') Contact by phone 
+                section 
+                    input(type='checkbox', name='contact_by_email')
+                    label(for='contact_by_email') Contact by email
+                section 
+                    input(type='checkbox', name='contact_by_mail')
+                    label(for='contact_by_mail') Contact by mail
+            button.create-contact-btn(type='submit') Add 
+            a.create-contact-btn(href='/') Cancel

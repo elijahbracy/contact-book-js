@@ -1,0 +1,62 @@
+extends layout.pug
+
+block content
+    style.
+        .container {
+            padding: 5em
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .back-btn {
+            background-color: #2ECCFA;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        .btn {
+            background-color: #2ECCFA;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+    .container
+        h1 Sign up
+        p Please select a username, and a password.  Don't worry about any password rules here, we don't really care much about protecting your information - so <code>helloworld</code> is just fine by us!
+        form(action='/signup', method='post')
+            section
+                label(for='firstname') First Name
+                input(type='text', placeholder='', name='first')
+            section    
+                label(for='lastname') Last Name
+                input(type='text', placeholder='', name='last')
+                hr
+            section
+                label(for='username') Username
+                br
+                input(type="text", name='username')
+            section
+                label(for='password') Password
+                br
+                input(type="password", name='password')
+            section
+                label(for='password2') Confirm Password
+                br
+                input(type='password', name='password2')
+            section
+            hr
+            p
+                button(type='submit') Signup
+                a.back-btn(href='/') Nevermind
+            if message 
+                p #{message}
+        p Already have an account? 
+            a.btn(href='/login') Sign in here!

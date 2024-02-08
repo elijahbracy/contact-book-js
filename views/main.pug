@@ -1,0 +1,48 @@
+extends layout.pug
+
+block content
+    style.
+        .container {
+            padding: 20px;
+        }
+        .btn-new-contact {
+            background-color: #045FB4;
+            color: white;
+        }
+        .list-group-item {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+    .container
+        .row
+            h1.col Contact List
+            a.btn.btn-new-contact.col(href='/create') New Contact
+
+    .container
+        each contact in contacts
+            li.list-group-item
+                .d-flex.flex-row
+                    .col
+                        .row
+                            a(href='/' + contact.id).mb-1 #{contact.first} #{contact.last}
+                            small.text-muted #{contact.phone} | #{contact.email}
+                    .col
+                        .row
+                            p.mb-1 #{contact.street}, #{contact.city}, #{contact.state}, #{contact.zip}, #{contact.country}
+                    .col
+                         p.mb-1
+                            span
+                                label.d-block
+                                    | Phone
+                                    input(type='checkbox', disabled=true, checked=contact.contact_by_phone === 1)
+                            span
+                                label.d-block
+                                    | Email
+                                    input(type='checkbox', disabled=true, checked=contact.contact_by_email === 1)
+                            span
+                                label.d-block
+                                    | Mail
+                                    input(type='checkbox', disabled=true, checked=contact.contact_by_mail === 1)

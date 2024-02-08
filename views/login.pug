@@ -1,0 +1,41 @@
+extends layout.pug
+
+block content
+    style. 
+        .container {
+            padding: 3em;
+        }
+        .btn {
+            background-color: #2ECCFA;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .back-btn {
+            background-color: #2ECCFA;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+    .container
+        h1 Sign in
+        form(action='/login', method='post')
+            input(type='text', name='username')
+            br
+            input(type="password", name='password')
+            br
+            button(type='submit') Sign in
+            a.back-btn(href='/') Nevermind
+            if message 
+                p #{message}
+        p Don't have an account yet? 
+            a.btn(href='/signup') Sign up here!
+        

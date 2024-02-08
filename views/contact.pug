@@ -1,0 +1,67 @@
+extends layout.pug
+
+block content
+    style.
+        .container {
+            padding: 5em
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .contact-page-btn {
+            background-color: #2ECCFA;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .button-container {
+            display: flex;
+            margin-top: 10px;
+        }
+        .back-btn {
+            background-color: #2ECCFA;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+    .container
+        h1 Contact Info 
+        h2 #{contact.first + ' ' + contact.last}
+        hr
+        a.back-btn(href='/') Back to list 
+        p 
+            b Phone Number: 
+            span #{contact.phone}
+            p
+                if contact.contact_by_phone
+                    i May be contacted by phone or text
+        hr
+        p
+            b Email Address: 
+            span #{contact.email}
+            p
+                if contact.contact_by_email
+                    i May be contacted by email
+        hr
+        p
+            b Address: 
+            section #{contact.street}
+            section #{contact.state}
+            section #{contact.city}
+            section #{contact.zip}
+            section #{contact.country}
+            p 
+                if contact.contact_by_mail
+                    i May be contacted by mail
+        hr
+        .button-container
+            a.contact-page-btn(href='/' + contact.id + '/edit') Edit Contact 
+            a.contact-page-btn(href='/' + contact.id + '/delete') Delete Contact
